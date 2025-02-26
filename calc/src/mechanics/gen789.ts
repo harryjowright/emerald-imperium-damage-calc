@@ -395,6 +395,7 @@ export function calculateSMSSSV(
       (move.hasType('Grass') && defender.hasAbility('Sap Sipper')) ||
       (move.hasType('Fire') && defender.hasAbility('Flash Fire', 'Well-Baked Body')) ||
       (move.hasType('Water') && defender.hasAbility('Dry Skin', 'Storm Drain', 'Water Absorb')) ||
+      (move.hasType('Ice') && defender.hasAbility('Ice Eater')) ||
       (move.hasType('Rock') && defender.hasAbility('Mountaineer')) ||
       (move.hasType('Electric') &&
         defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) ||
@@ -1337,7 +1338,11 @@ export function calculateAtModsSMSSSV(
   ) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
-  } else if (attacker.hasAbility('Transistor') && move.hasType('Electric')) {
+  } else if (attacker.hasAbility('Emperor’s Presence') && ["Water", "Steel"].includes(move.type)) {
+    atMods.push(5325); // 1.3x boost
+    desc.attackerAbility = attacker.ability;
+}
+  else if (attacker.hasAbility('Transistor') && move.hasType('Electric')) {
     atMods.push(gen.num >= 9 ? 5325 : 6144);
     desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility('Stakeout') && attacker.abilityOn) {

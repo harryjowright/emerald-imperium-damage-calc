@@ -358,6 +358,8 @@ const RR = SV.concat([
   'Self Sufficient',
   'Striker',
   'Surprise!',
+  'Ice Eater',
+  'Emperor’s Presence'
 ]);
 
 export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS, RR];
